@@ -26,7 +26,6 @@ $host.ui.rawui.windowtitle = $SCRIPTNAME
 WriteLog "INFO" $SCRIPTNAME $SCRIPTNAME
 
 function Main{
-	#param([Parameter(Mandatory=$true)][string]$environmentName, [Parameter(Mandatory=$true)][string]$farmName)
     Try{ 
 		$serversList = GetServersList
 		
@@ -92,9 +91,9 @@ function Main{
 	}
 	Finally{
 		#Send Email
-			SendMessage `
-			"osirismatiz@createglobalweb.com" `
-			"monicahidalgo@createglobalweb.com" `
+			SendMessageNoSSL `
+			"noreply@chubb.com" `
+			"osiris.matiz2@chubb.com" `
 			"Servers Monitor $computerName - [$computerIP]" `
 			"$htmlTable"
 	}

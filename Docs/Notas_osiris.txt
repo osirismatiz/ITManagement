@@ -1,0 +1,591 @@
+Chubb Latinamerica - LA_WEBAPP_eMail <ChubbLatinamericaLA_WEBAPP_eMail@Chubb.com>
+
+LA_WEBADMINWIN
+
+Solarwinds	 	 	 	 	
+http://lanapswamt01/Orion/SummaryView.aspx?ViewID=81
+chubbnet
+Seguros123*
+
+Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -recurse |
+Get-ItemProperty -name Version,Release -EA 0 |
+Where { $_.PSChildName -match '^(?!S)\p{L}'} |
+Select PSChildName, Version, Release
+
+Plantilla:
+LANAPBZTA02.aceins.com 
+172.25.104.241
+
+C:\Program Files (x86)\Microsoft Enterprise Library 5.0\Bin
+
+\\LANAPBZTLKSRV01\EInvoice Files\Logs
+
+$relativePath = "..\.."
+
+. ..\..\..\..\Install\Scripts\ESBFunctions.ps1
+
+http://localhost/ESB.UDDI.Service/UDDIService.asmx
+http://localhost/ESB.UDDI.Service/UDDIService.asmx
+
+http://localhost/uddi
+
+http://localhost/uddi/publish.asmx
+
+http://localhost/ESB.UDDIService/UDDIService.asmx
+
+C:\Program Files (x86)\Microsoft BizTalk Server 2016\BAMPortal
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.BizTalkOperationsService
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ExceptionHandlingServices
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ExceptionHandlingServices.WCF
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ItineraryServices
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ItineraryServices.Generic.Response.WCF
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ItineraryServices.Generic.WCF
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ItineraryServices.Response
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ItineraryServices.Response.WCF
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ItineraryServices.WCF
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ResolverServices
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.ResolverServices.WCF
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.TransformServices
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit\Web\ESB.TransformServices.WCF
+
+F:\Projects\Microsoft.Practices.ESB\Source\Samples\Management Portal\ESB.BAM.Service\ESB.BAM.Service\ESB.BAM.Service
+F:\Projects\Microsoft.Practices.ESB\Source\Samples\Management Portal\ESB.Exceptions.Service\ESB.Exceptions.Service
+F:\Projects\Microsoft.Practices.ESB\Source\Samples\Management Portal\ESB.Portal
+F:\Projects\Microsoft.Practices.ESB\Source\Samples\Management Portal\ESB.UDDIService
+
+Source\Samples\DynamicResolution\Install\Scripts\DynamicResolution_Install.ps1 
+Source\Samples\DynamicResolution\Install\Scripts\DynamicResolution_Uninstall.ps1 
+Source\Samples\Itinerary\Install\Scripts\Itinerary_Install.ps1 
+Source\Samples\ Itinerary \Install\Scripts\Itinerary_Uninstall.ps1 
+Source\Samples\MultipleWebServices\Install\Scripts\MultipleWebServices _Install.ps1 
+Source\Samples\MultipleWebServices\Install\Scripts\MultipleWebServices _Uninstall.ps1 
+
+
+Microsoft.BizTalk.DefaultPipelines.XMLReceive, Microsoft.BizTalk.DefaultPipelines
+
+%comspec% /k "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
+
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin
+
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "http://172.25.104.157/ESB.Portal/ESB.Portal.sln" /t:Rebuild /p:Configuration=Release /p:Platform="Any CPU"
+
+msbuild "C:\Users\Oliver\Documents\My Project\My Project.sln" /t:Rebuild /p:Configuration=Release /p:Platform="Any CPU"
+
+/msbuild.exe ./solutionX.sln" /v:q /nologo /p:Configuration=Release
+
+
+WM_ESB_Isolated_Receive_Host
+WM_ESB_Isolated_Send_Host
+WM_ESB_Process_Host_32Bit
+WM_ESB_Receive_Host_32Bit
+WM_ESB_Send_Host_32Bit
+
+
+ACEINA\SLPHOST_LAB2016
+ACEINA\SLPISOHST_LAB2016
+ACEINA\SLPRULE_LAB2016
+ACEINA\SLPSQL_LAB2016
+ACEINA\SLPADMIN_LAB2016
+ACEINA\SLPBAM_LAB2016
+ACEINA\SLPAlRT_LAB2016
+ACEINA\SLPKHST_LAB2016
+ACEINA\SLPWEB_LAB2016
+05b1ZT4lK$o19#
+
+ACEINA\SLPSSO_LAB2016
+L4w3B#$o19%
+
+
+BIZTALK GROUPS
+---------------------------------------------------------------
+ACEINA\GRP_LA_PPT_BTS SSO Affi Admins
+ACEINA\GRP_LA_PPT_BTS SSO Admins
+
+ACEINA\GRP_LA_PPT_BTS Administrators
+ACEINA\GRP_LA_PPT_BTS Operators
+ACEINA\GRP_LA_PPT_BTS B2B Operators
+ACEINA\GRP_LA_PPT_BTS App Users
+ACEINA\GRP_LA_PPT_BTS Iso Host Users
+
+ACEINA\ESB_Portal_Operators
+
+
+http://172.25.104.157/ESB.Portal/Faults/Faults.aspx
+http://172.25.104.157/ESB.Portal/Faults/Faults.aspx
+
+sqlcmd -S SQLBIZTALK04,1436
+sqlcmd -S SQLBIZTALK04,1436
+sqlcmd -S 'SQLBIZTALK04,1436'
+
+
+Carpetas ESB Portal
+---------------------------------------------------------
+
+App_Data
+Backup
+bin
+Code
+css
+DataSets
+Images
+obj
+Properties
+Script
+Temp
+Templates
+Web References
+URL
+
+---------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Home/HomePage.aspx?tzo=-6
+http://172.25.104.157/ESB.Portal/Faults/Faults.aspx
+
+http://172.25.104.157/ESB.Portal/
+
+http://172.25.104.157/ESB.Portal/
+
+-----------------------------------------------------------------------------------------------------------------
+
+root
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/PortalSettings.aspx
+
+Home
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Home/HomePage.aspx
+
+
+Admin
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Admin/AddSubscriptions.aspx
+http://172.25.104.157/ESB.Portal/Admin/AlertHistory.aspx
+http://172.25.104.157/ESB.Portal/Admin/Alerts.aspx
+http://172.25.104.157/ESB.Portal/Admin/AlertViewer.aspx
+http://172.25.104.157/ESB.Portal/Admin/AuditLog.aspx
+http://172.25.104.157/ESB.Portal/Admin/Configuration.aspx
+http://172.25.104.157/ESB.Portal/Admin/DeleteAlert.aspx
+http://172.25.104.157/ESB.Portal/Admin/DeleteSubscription.aspx
+http://172.25.104.157/ESB.Portal/Admin/EditSubscription.aspx
+http://172.25.104.157/ESB.Portal/Admin/ResubmittedMessageViewer.aspx
+
+Alerts
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Alerts/AddSubscriptions.aspx
+http://172.25.104.157/ESB.Portal/Alerts/AlertAdd.aspx
+http://172.25.104.157/ESB.Portal/Alerts/AlertEdit.aspx
+http://172.25.104.157/ESB.Portal/Alerts/Alerts.aspx
+http://172.25.104.157/ESB.Portal/Alerts/AlertViewer.aspx
+http://172.25.104.157/ESB.Portal/Alerts/DeleteSubscription.aspx
+http://172.25.104.157/ESB.Portal/Alerts/EditSubscription.aspx
+
+
+Charts
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Charts/AlertCountByApp.aspx
+http://172.25.104.157/ESB.Portal/Charts/AlertSubscriptionsOverTime.aspx
+http://172.25.104.157/ESB.Portal/Charts/FaultCountByApp.aspx
+http://172.25.104.157/ESB.Portal/Charts/FaultCountByErrorType.aspx
+http://172.25.104.157/ESB.Portal/Charts/FaultCountByServices.aspx
+http://172.25.104.157/ESB.Portal/Charts/FaultCountOverTimeByApp.aspx
+http://172.25.104.157/ESB.Portal/Charts/ResubmissionsOverTimeByApp.aspx
+
+Faults
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Faults/Faults.aspx
+http://172.25.104.157/ESB.Portal/Faults/FaultViewer.aspx
+http://172.25.104.157/ESB.Portal/Faults/Itineraries.aspx
+http://172.25.104.157/ESB.Portal/Faults/MessageViewer.aspx
+
+Lists
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Lists/AlertSummaryContainer.aspx
+http://172.25.104.157/ESB.Portal/Lists/FaultSummaryContainer.aspx
+http://172.25.104.157/ESB.Portal/Lists/RegistrySummaryContainer.aspx
+
+Reports
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Reports/AlertCountByService.aspx
+http://172.25.104.157/ESB.Portal/Reports/AlertSubOverTimeService.aspx
+http://172.25.104.157/ESB.Portal/Reports/FaultCountByErrorTypeApp.aspx
+http://172.25.104.157/ESB.Portal/Reports/FaultCountByService.aspx
+http://172.25.104.157/ESB.Portal/Reports/FaultCountOverTimeByAppService.aspx
+http://172.25.104.157/ESB.Portal/Reports/Reports.aspx
+http://172.25.104.157/ESB.Portal/Reports/ResubmissionOverTimeByService.aspx
+
+Uddi
+---------------------------------------------------------------
+http://172.25.104.157/ESB.Portal/Uddi/UDDI.aspx
+http://172.25.104.157/ESB.Portal/Uddi/UDDIAdmin.aspx
+http://172.25.104.157/ESB.Portal/Uddi/UDDIDetails.aspx
+http://172.25.104.157/ESB.Portal/Uddi/UDDIPendingRequests.aspx
+http://172.25.104.157/ESB.Portal/Uddi/UDDIRequestHistory.aspx
+
+
+
+SLPAlRT_UAT
+
+slpalrt_uat
+
+Faults/Faults.aspx
+Alerts/Alerts.aspx
+Reports/Reports.aspx
+Registry
+Uddi/UDDI.aspx
+Uddi/UDDIPendingRequests.aspx
+Admin
+Admin/AuditLog.aspx
+Admin/Configuration.aspx
+Admin/Alerts.aspx
+Uddi/UDDIAdmin.aspx
+PortalSettings.aspx
+
+Notas
+--------------------
+
+$credential = Get-Credential
+$credential | Export-CliXml -Path 'cred.xml'
+$credential | Export-CliXml -Path "myCred_${env:USERNAME}_${env:COMPUTERNAME}.xml"
+$credential = Import-CliXml -Path 'cred.xml'
+
+
+read-host -assecurestring | convertfrom-securestring | out-file cred.txt
+$password = get-content cred.txt | convertto-securestring
+$credentials = new-object -typename System.Management.Automation.PSCredential -argumentlist "myusername", $pass
+
+$Credential = Get-Credential
+Invoke-Command -ComputerName 172.25.2.107 -Credential $Credential -ScriptBlock {whoami}
+
+Read-Host -AsSecureString | ConvertFrom-SecureString | Out-File TCred.txt
+
+.\MSBuild.exe -version
+%windir%\Microsoft.NET\Framework\.\.\MSBuild.exe -version
+
+%windir%\Microsoft.NET\Framework\.\MSBuild.exe -version
+
+vagrant
+
+NET USER SLPISOHST_DEV2016 /DOMAIN | FIND "Account active"
+NET USER SLPHOST_DEV2016 /DOMAIN | FIND "Account active"
+
+NET GROUP "GRP_LA_PPT_BTS Administrators" /DOMAIN
+NET GROUP "GRP_LA_PPT_BTS Operators" /DOMAIN
+NET GROUP "GRP_LA_PPT_BTS App Users" /DOMAIN
+NET GROUP "ESB_Portal_Operators" /DOMAIN
+
+NET USER nxnaga /DOMAIN
+
+NET USER SLPAlRT_LAB2016 /DOMAIN
+
+ACEINA\SLPAlRT_LAB2016
+05b1ZT4lK$o19#
+
+http://172.25.104.157/ESB.Portal/Home/Homepage.aspx
+
+
+\\172.25.2.107\Shared\ACE.ElectronicInvoicing.EC.Biztalk.Common\2018-12-20
+
+
+User: 
+sis_eiecftpprd
+Pass: 
+SIS#ftpch1
+
+ACEINA\SLPSQL_LAB2016
+ACEINA\SLPHOST_LAB2016
+ACEINA\SLPWEB_LAB2016
+
+NET USER SLPSQL_LAB2016 /DOMAIN
+
+
+NET USER SLPADMIN_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPBAM_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPAlRT_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPHOST_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPISOHST_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPRULE_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPSQL_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPKHST_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPWEB_LAB2016 /DOMAIN | FIND "Account active"
+NET USER SLPSSO_LAB2016 /DOMAIN | FIND "Account active"
+
+NET USER nxnaga /DOMAIN
+
+LANAPBZTA03\BT_Services
+
+
+https://www.top-password.com/blog/2-methods-to-start-sql-server-in-single-user-mode/
+https://blogs.technet.microsoft.com/sqlman/2011/06/14/tips-tricks-you-have-lost-access-to-sql-server-now-what/
+https://www.wikihow.com/Reset-SA-Password-in-Sql-Server
+
+
+http://10.192.8.63/ACE.ElectronicInvoicing.Biztalk.WebService.APP/WcfService_ACE_ElectronicInvoicing_Biztalk_WebService_APP.svc
+
+
+\\172.25.5.211\EInvoice Files\Logs
+
+
+[?4/?1/?2019 10:26 PM] Hernandez, Julian A.    INTL - Colombia: 
+http://172.25.5.210/BizTalk360/
+
+TITLE: BizTalk Server Administration
+------------------------------
+
+Primary Receive Location cannot be deleted. (Microsoft.BizTalk.ExplorerOM)
+
+For help, click: http://go.microsoft.com/fwlink/?LinkId=47400&ProdName=Microsoft+BizTalk+Server+2010&ProdVer=3.9.469.0&EvtSrc=Microsoft.BizTalk.ExplorerOM.Resources&EvtID=IDS_PRIMARY_RLOCATION_CANNOT_BE_DELETED
+
+------------------------------
+BUTTONS:
+
+OK
+------------------------------
+%datetime.tz%_%MessageID%.xml
+
+172.25.9.103
+
+The adapter "FTP" raised an error message. Details "The folder "FPV41/EIEC_OUTPUT/WebSite/VDI" does not exist. ".
+
+
+
+FPV41/EIEC_OUTPUT/WebSite/VDI
+
+ftp://172.25.6.19/EIEC_OUTPUT1/WebSite/
+
+
+
+
+NET USER SLPADMIN_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPBAM_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPAlRT_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPHOST_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPISOHST_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPRULE_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPSQL_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPKHST_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPWEB_UAT2016 /DOMAIN | FIND "Account active"
+NET USER SLPSSO_UAT2016 /DOMAIN | FIND "Account active"
+
+NET USER SLPSSO_DEV /DOMAIN | FIND "Account active"
+
+
+IIS error Event code: 3005 Event message: An unhandled exception has occurred. 
+
+
+
+Z3E&\=c5S*
+
+
+ACEINA\SLPADMIN_PRE2016	
+ACEINA\SLPBAM_PRE2016	
+ACEINA\SLPAlRT_PRE2016	
+ACEINA\SLPHOST_PRE2016
+ACEINA\SLPISOHST_PRE2016
+ACEINA\SLPRULE_PRE2016	
+ACEINA\SLPSQL_PRE2016	
+ACEINA\SLPKHST_PRE2016	
+ACEINA\SLPWEB_PRE2016
+Z3E&\=c5S*
+
+SQL Server Management Studio 17.9.1
+
+TITLE: BizTalk Server Administration
+------------------------------
+Microsoft.Practices.ESB Could not enlist Send Port 'ALL.Exceptions'. The text associated with this error code could not be found.
+
+Invalid xml declaration.
+ (Microsoft.BizTalk.SnapIn.Framework)
+
+For help, click: http://go.microsoft.com/fwlink/?LinkId=47400&ProdName=Microsoft+BizTalk+Server+2016&ProdVer=3.12.774.0&EvtSrc=Microsoft.BizTalk.ExplorerOM.Resources&EvtID=IDS_ERR_SENDPORT_ENLIST
+
+------------------------------
+BUTTONS:
+
+OK
+------------------------------
+
+
+Local
+http://localhost/ESB.Portal/Home/Homepage.aspx
+
+LAB
+http://172.25.104.157/ESB.Portal/Home/Homepage.aspx
+
+SIT OnDemand 2016 
+http://172.25.104.183/ESB.Portal/Home/Homepage.aspx
+
+SIT Batch 2016
+http://172.25.104.191/ESB.Portal/Home/Homepage.aspx
+
+UAT OnDemand 2016
+http://172.25.104.128/ESB.Portal/Home/Homepage.aspx
+
+UAT Batch 2016
+http://172.25.104.81/ESB.Portal/Home/Homepage.aspx
+
+PreProd OnDemand 2016
+http://172.25.104.176/ESB.Portal/Home/HomePage.aspx
+
+PreProd Batch 2016
+http://172.25.104.215/ESB.Portal/Home/HomePage.aspx
+
+
+
+ACEINA\SLPAlRT_LAB2016
+05b1ZT4lK$o19#
+
+C:\Program Files (x86)\Microsoft BizTalk Server 2016\BAMPortal
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit
+F:\Projects\Microsoft.Practices.ESB
+
+ACEINA\SLPWEB_PRE2016
+
+
+ACEINA\GRP_LA_PPT_BTS Administrators
+ACEINA\GRP_LA_PPT_BTS App Users
+ACEINA\ESB_Portal_Operators
+
+ACEINA\SLPHOST_SIT2016
+ACEINA\SLPISOHST_SIT2016
+ACEINA\SLPWEB_SIT2016
+Z3E&\=c5S*
+
+
+FTP
+//*[local-name()='SendPortCollection']/*[local-name()='SendPort']/*[local-name()='PrimaryTransport']/*[local-name()='TransportTypeData']
+[contains(text(),'AdapterConfig')]
+
+SQL
+//*[local-name()='ReceivePortCollection']/*[local-name()='ReceivePort']/*[local-name()='ReceiveLocations']/*[local-name()='ReceiveLocation']/*[local-name()='ReceiveLocationTransportTypeData']
+[contains(text(),'BindingConfiguration')]
+
+FTP
+//*[local-name()='ReceivePortCollection']/*[local-name()='ReceivePort']/*[local-name()='ReceiveLocations']/*[local-name()='ReceiveLocation']/*[local-name()='ReceiveLocationTransportTypeData']
+[contains(text(),'AdapterConfig')]
+
+File
+//*[local-name()='ReceivePortCollection']/*[local-name()='ReceivePort']/*[local-name()='ReceiveLocations']/*[local-name()='ReceiveLocation']/*[local-name()='ReceiveLocationTransportTypeData']
+[contains(text(),'RenameReceivedFiles')]
+
+
+LANAPBZEID01 - 172.25.2.148
+
+
+
+TITLE: BizTalk Server Administration
+------------------------------
+
+Cannot perform encryption or decryption because the secret is not available from the master secret server. See the event log (on computer 'LANAPBZEID01') for related errors.
+ (WinMgmt)
+
+------------------------------
+BUTTONS:
+
+OK
+------------------------------
+
+
+
+Admin Email: 
+Julian.HernandezAlmanza@chubb.com
+SMTP Settings
+Server Name: 172.25.9.116
+Port: 25
+Security Settings
+SSL Mode: No SSL
+Authentication: Anonymous
+
+ 
+ 
+ SendPort_Input_OnDemand
+--------------------------------
+\\172.25.9.191\EInvoice Files\FTPLog\FTPLog.log
+\\172.25.9.191\EInvoice Files\FTPBackup\
+%SourceFileName%.log
+
+SP_WorkStation_OnDemand
+--------------------------------
+\\172.25.9.191\EInvoice Files\FTPLog\SP_WorkStation_OnDemand.log
+\\172.25.9.191\EInvoice Files\FTPBackup\
+%SourceFileName%.log
+
+ftp://172.25.98.27/IN/OnDemand/
+
+ASESV002
+
+osiris.matiz2@chubb.com
+
+osiris.matizzapata@cognizant.com
+
+
+LAUSD-WACCAPP01 - 172.25.104.170
+
+Servicios WCF
+Web.config
+  <system.serviceModel>
+  <serviceHostingEnvironment multipleSiteBindingsEnabled="true"/>
+  
+
+ftp://172.25.98.27/IN/OnDemand/
+
+ASESV002
+
+Osiris.Matiz2@Chubb.com
+
+osiris.matizzapata@cognizant.com
+
+<td style="font-size: 12px; margin:0 auto; width:60px; padding-bottom: 3px; padding-top: 3px;font-family:Arial; color: #FFF; text-align:center; background:#eb6969;">Critical</td>
+<td style="font-size: 12px; margin:0 auto; width:60px; padding-bottom: 3px; padding-top: 3px;font-family:Arial; color: #FFF; text-align:center; background:#52c0ac;">Healthy</td>
+<td style="font-size: 12px; margin:0 auto; width:60px; padding-bottom: 3px; padding-top: 3px;font-family:Arial; color: #FFF; text-align:center; background:#f4be60;">Warning</td>
+
+titulo naranja
+<td style="padding:15px;">
+<p style="font-size: 36px; font-family: Arial; padding-bottom: 10px; padding-top: 0px; padding-left: 0px; padding-right: 0px; margin-bottom: 10px; margin-top: 10px; margin-left: 0px; margin-right: 0px"><span style="color:#FFFFFF">BizTalk360 PRODUCTION</span></p>
+</td>
+
+SendPort_FTP_Output_XML_Autonet
+SendPort_FTP_Output_XML_OnEmail
+SendPort_FTP_Output_PDF_Autonet
+SendPort_Input_OnDemand
+SendPort_FTP_Output_XML_WIS
+SendPort_FTP_Output_PDF_WIS
+SP_WorkStation_OnDemand
+SendPort_FTP_Output_PDF_Comprobante
+
+----------------------
+LANAPBZEID01 - 172.25.2.148
+
+BizTalk User:
+ACEINA\SLPHOST_DEV
+ACEINA\SLPISOHST_DEV
+ACEINA\SLPSQL_DEV
+Ace@12345
+
+
+BizTalk Group:
+ACEINA\GRP_LA_PPT_BTS App Users
+
+
+PRESQL08
+172.25.104.69
+SQLACEINA08
+EI_ECUADOR_DEV
+usr_ei_dev
+Eleinv2dev
+
+LANAPBZEID01\BIZTALK
+SSO Administrators
+SSO Affiliate Administrators
+
+ACEINA\SLPHOST_DEV
+ACEINA\SLPISOHST_DEV
+
+ACEINA\GRP_LA_PPT_BTS App Users
+ACEINA\GRP_LA_PPT_BTS Iso Host Users
+
+#	Editado por	IP Address	Server Name	Main Software	Applications	Domain	Operative System	Processors	RAM Memory	
+
+
+172.25.104.69\SQLACEINA08
+
+
+<[td^>]+>5([0-9][0-9])

@@ -1,7 +1,7 @@
-﻿$smtpServer = "mail.createglobalweb.com"
-$smtpPort = 587
-$smtpUser = "osirismatiz@createglobalweb.com"
-$smtpPass = "Qwerty123$"
+﻿$smtpServer = "172.25.9.116"
+$smtpPort = 25
+$smtpUser = "Anonymous"
+$smtpPass = "Anonymous"
 
 function SendMessageNoSSL{
 	param([Parameter(Mandatory=$true)]$emailFrom, 
@@ -18,6 +18,7 @@ function SendMessageNoSSL{
 		$SMTPMessage.To.Add($emailTo)
 
 		$SMTPMessage.subject = $emailSubject
+		$SMTPMessage.IsBodyHTML = $true
 		$SMTPMessage.Body = $emailBody
 
 		$SMTPClient = New-Object Net.Mail.SmtpClient($smtpServer, $smtpPort) 
@@ -29,7 +30,7 @@ function SendMessageNoSSL{
         $ErrorMessage = $_.Exception.Message
         $FailedItem = $_.Exception.ItemName
 		WriteLog "ERROR" "[SendMessageNoSSL] $FailedItem. The error message was $ErrorMessage $Error[0].Exception ($PSItem.ScriptStackTrace)" $SCRIPTNAME -ErrorAction Stop
-		Continue
+		#Continue
 	}
 	Finally
 	{
@@ -64,7 +65,7 @@ function SendMessage{
         $ErrorMessage = $_.Exception.Message
         $FailedItem = $_.Exception.ItemName
 		WriteLog "ERROR" "[SendMessage] $FailedItem. The error message was $ErrorMessage $Error[0].Exception ($PSItem.ScriptStackTrace)" $SCRIPTNAME -ErrorAction Stop
-		Continue
+		#Continue
 	}
 	Finally
 	{
@@ -104,7 +105,7 @@ function SendMessageWithAttachment{
         $ErrorMessage = $_.Exception.Message
         $FailedItem = $_.Exception.ItemName
 		WriteLog "ERROR" "[SendMessageWithAttachment] $FailedItem. The error message was $ErrorMessage $Error[0].Exception ($PSItem.ScriptStackTrace)" $SCRIPTNAME -ErrorAction Stop
-		Continue
+		#Continue
 	}
 	Finally
 	{

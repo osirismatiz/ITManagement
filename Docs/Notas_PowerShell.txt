@@ -1,0 +1,440 @@
+$PSVersionTable
+
+
+Get-Process | Select-Object * | Format-Table -AutoSize 
+
+
+Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id ProcessName
+-------  ------    -----      ----- -----   ------     -- -----------
+     79       8     1308       1240    43     0,00   1728 armsvc
+    129      10    15932      16288    52            4200 audiodg
+    405      32     7188       9352   129     0,22   6600 AuthManSvr
+   1163      49    36476      29716   274     6,91   4500 CcmExec
+   2708     142   247952      43976   494   161,98   6944 ccSvcHst
+    362      31    17044       4376   116     0,50   7888 ccSvcHst
+    567      45    32452      15576   272     1,51   4256 CDViewer
+
+Get-Process powershell -fileversioninfo
+
+Get-Process | sort Handles
+Get-Process | sort CPU
+Get-Process | sort CPU -Descending
+Get-Process | sort @{ expression = "CPU"; Descending = $true }, @{ expression = "ProcessName"; Ascending = $true } 
+Set:
+Get-Process | sort @{ expression = { if ($_.Name -eq "ccSvcHst" ) { $_.CPU += 6 }}}, CPU -Descending
+
+Get-Process | Sort-Object -Property CPU -Descending
+Get-Process | Sort-Object -Property @{ Expression = "CPU"; Descending = $True }, @{ Expression = "ProcessName"; Descending = $False }
+
+| ForEach-Object -Process {[int]$_} | Sort-Object
+
+Get-Process | Measure-Object -Property CPU -Maximum 
+
+Get-Process | Select-Object -Property ProcessName, Id, WS | Format-Table
+
+
+Get-Process Explorer | Select-Object -Property ProcessName -ExpandProperty Modules | Format-Table
+
+Get-Process notepad++ | Select-Object -Property ProcessName -ExpandProperty Modules | Select-Object -Property FileName | Format-Table
+
+
+Get-Process | Select-Object -Property ProcessName, @{ Name="Start Day"; Expression = {$_.StartTime.DayOfWeek } } | Format-Table -AutoSize
+
+Get-Process | Where-Object { $_.CPU -gt 100 }
+
+Get-Process | Where-Object { $_.VM -gt 100000 } | Sort-Object -Property VM -Descending
+
+Get-Process | Sort CPU -descending | Select -first 5 -Property ID,ProcessName,CPU | format-table -autosize
+
+	
+Invoke-Command -scriptblock {Get-Process | Sort CPU -descending | Select -first 5 } -computername chi-dc04
+
+$computers = "chi-hvr2","chi-dc01","chi-dc02","chi-dc04","chi-core01","chi-fp02","chi-web02"
+Invoke-Command -scriptblock {Get-Process | Sort CPU -descending | Select -first 5 } -computername $computers
+
+
+$counters = "\Process(*)\% Processor Time","\Processor(_Total)\% Processor Time"
+Get-Counter -Counter $counters -MaxSamples 30 -SampleInterval 2
+
+Get-Process | Sort-Object -Property CPU -Descending | Select-Object -First 5 | Select-Object -Property Id, CPU, ProcessName, Path | Format-Table -AutoSize 
+
+[math]::Round($a,2)
+
+Get-Process | Select CPU, @{CPU='size in MB'; e={[math]::Round(($_.CPU /1MB),2)}}
+
+
+Get-Process | Select-Object -Property ProcessName,@{Name="CPU_Time"; Expression = {[math]::Round($_.CPU, 2)}} | Format-Table -AutoSize 
+
+Get-Process | Sort-Object -Property VM -Descending | Select-Object -First 5 | Select-Object -Property Id, @{Name="CPU_Time"; Expression = {[math]::Round($_.CPU, 2)}}, VM, ProcessName, Path | Format-Table -AutoSize 
+
+HTTP method options viz., GET, HEAD, POST, PUT, PATCH to customize 
+
+Get-Counter -Counter "\Processor(_Total)\% Processor Time" -SampleInterval 2 -MaxSamples 30
+
+$DiskReads = "\LogicalDisk(C:)\Disk Reads/sec"
+$DiskReads | Get-Counter -Computer LAUSD-WBZT0014 -MaxSamples 10
+
+Get-Counter "\Processor(*)\% Processor Time" -SampleInterval 2 -MaxSamples 5 | Export-Counter -Path dt.blg -Force 
+Invoke-Item dt.blg
+
+Get-Counter "\Processor(*)\% Processor Time" -SampleInterval 2 -MaxSamples 5 | Export-Clixml -Path co.xml -Force 
+Invoke-Item co.xml
+
+
+
+
+
+Source=
+
+
+C:\Program Files (x86)\Microsoft BizTalk Server 2016
+C:\Program Files (x86)\Microsoft BizTalk ESB Toolkit
+F:\Projects\Microsoft.Practices.ESB\Source
+
+
+
+#$user = "ACEINA\SLPAlRT_LAB2016"
+#$pass= "05b1ZT4lK$o19#"
+
+$url = 'http://172.25.104.157/ESB.Portal/Home/Homepage.aspx'
+$WebRequestObject = [System.Net.HttpWebRequest] [System.Net.WebRequest]::Create($url);
+$WebRequestObject.UseDefaultCredentials = $true;
+$WebRequestObject.PreAuthenticate = $true;
+$ResponseObject = [System.Net.HttpWebResponse] $WebRequestObject.GetResponse();
+$ResponseObject.Headers
+
+cls
+$url = 'http://172.25.104.157/ESB.Portal/Home/Homepage.aspx'
+$username = "ACEINA\SLPAlRT_LAB2016"
+$password = ConvertTo-SecureString "05b1ZT4lK$o19#" -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+Invoke-WebRequest -Credential $cred -Uri $url
+
+$uri = "http://172.25.104.157/ESB.Portal/Home/Homepage.aspx"
+$srv = New-WebServiceProxy -Uri $uri -UseDefaultCredential
+ 
+$result = "false"
+$resultSp = "false"
+$date = (Get-Date).ToString("yyyy/MM/dd hh:mm:ss")
+ 
+$srv.NotifyStatus("Type X", 4, "true" ,"Server is running." , [ref] $result, [ref] $resultSp)
+
+LAUSD-WBZT0014
+
+$user = "ACEINA\SLPAlRT_LAB2016"
+$pass= "05b1ZT4lK`$o19#"
+$url = 'http://172.25.104.157/ESB.Portal/Home/Homepage.aspx'
+$web = New-Object System.Net.WebClient
+#$web.UseDefaultCredentials=$true
+$web.Credentials = new-object System.Net.NetworkCredential($user, $pass)
+$out = $web.DownloadString("$url")
+if($out -match "access"){" $url is accessible"}else{"$url is not accessible"}
+
+
+Get-Service wuauserv -ComputerName LAUSD-WBZT0014 | Export-Clixml -Path wu.xml
+Invoke-Item wu.xml
+
+$TotalSteps = 4
+$Step = 1
+$StepText = "Setting Initial Variables"
+$StatusText = '"Step $($Step.ToString().PadLeft($TotalSteps.Count.ToString().Length)) of $TotalSteps | $StepText"'
+$StatusBlock = [ScriptBlock]::Create($StatusText)
+$Task = "Creating Progress Bar Script Block for Groups"
+Write-Progress -Id $Id -Activity $Activity -Status (&amp; $StatusBlock) -CurrentOperation $Task -PercentComplete ($Step / $TotalSteps * 100)
+
+
+Get-Counter -Counter "\Processor(_Total)\% Processor Time" -SampleInterval 2 -MaxSamples 30
+
+$DiskReads = "\LogicalDisk(C:)\Disk Reads/sec"
+$DiskReads | Get-Counter -Computer LAUSD-WBZT0014 -MaxSamples 10
+
+Get-Counter "\Processor(*)\% Processor Time" -SampleInterval 2 -MaxSamples 5 | Export-Counter -Path dt.blg -Force 
+Invoke-Item dt.blg
+
+Get-Counter "\Processor(*)\% Processor Time" -SampleInterval 2 -MaxSamples 5 | Export-Clixml -Path co.xml -Force 
+Invoke-Item co.xml
+
+$yesterday = (Get-Date) - (New-TimeSpan -Day 1)
+Get-WinEvent -FilterHashTable @{LogName='Application'; Level=2; StartTime=$yesterday}
+
+Get-WinEvent -FilterHashTable @{LogName='Application'; Level='Information'; StartTime=$yesterday}
+Get-WinEvent -FilterHashTable @{LogName='Application'}
+
+Get-WinEvent -FilterHashTable @{LogName='Application'; Level=0}
+Get-WinEvent -FilterHashTable @{LogName='Application'; Level=1}
+Get-WinEvent -FilterHashTable @{LogName='Application'; Level=3}
+Get-WinEvent -FilterHashTable @{LogName='Application'; Level=4}
+Get-WinEvent -FilterHashTable @{LogName='Application'; Level=5}
+
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='Chubb.S6UpdaterService'; Level='4';}
+#Level=4 Information
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='CommitPRCService'; Level='4';}
+
+
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='WS_OLENotificationProcess'; Level='4';}
+
+-LogName System
+
+#Level=2 Error
+#Level=3 Warning
+#Level=4 Information
+
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='Chubb.S6UpdaterService'; Level='4';}
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='CommitPRCService'; Level='4';}
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='WS_OLENotificationProcess'; Level='4';}
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='ACE.Enterprise.Hybrid.EventServiceBus.Broker.MQ'; Level='0';}
+Get-WinEvent -FilterHashTable @{LogName='Application'; ProviderName='VMware Tools'; Level='3';}
+
+$env:psmodulePath
+
+Get-Module -ListAvailable | % { $_.ExportedCommands.Values }
+
+Get-Module -Name M* -ListAvailable | % { $_.ExportedCommands.Values }
+
+Get-Item IIS:\AppPools\* | Get-Member -memberType * 
+Get-Item IIS:\AppPools\* | Select-Object *
+
+Get-ChildItem -Path IIS:\AppPools | Get-Member -memberType *
+Get-ChildItem -Path IIS:\AppPools | Select-Object *
+
+Get-ChildItem -Path IIS:\AppPools | select -ExpandProperty processModel | select -expand username
+Get-ChildItem -Path IIS:\AppPools\ | Select-Object name, state, managedRuntimeVersion, managedPipelineMode, @{e={$_.processModel.username};l="username"}, <#@{e={$_.processModel.password};l="password"}, #> @{e={$_.processModel.identityType};l="identityType"} | format-table -AutoSize 
+
+Set-ItemProperty IIS:\AppPools\WcfAppPool -name processModel -value @{userName="user_name";password="password";identitytype=3}
+
+Get-ItemProperty "IIS:\AppPools\WcfAppPool" | Select -ExpandProperty processModel | Select -expand username = ".\Administrator"
+
+Restart-WebAppPool -Name "WcfAppPool" -ErrorAction SilentlyContinue
+
+IGBTS-017\Administrator
+
+	#Get-ChildItem "IIS:\AppPools\*" #| Where { $_.ExpandProperty -eq "processModel" } #| Where { $_.username -eq "Administrator" } 
+	
+	#Set-ItemProperty IIS:\AppPools\WcfAppPool -name processModel -value @{ userName = "user_name"; password = "password"; identitytype = 3 }
+	
+	#$appPool | Set-ItemProperty -Name processModel -Value @{ userName = "user_name"; password = "password"; identitytype = 3 }
+
+#$appPoolList | Select-Object * | Select-Object *
+	#Get-Module -name "WebAdministration"
+	
+	#Stop-WebAppPool -Name "WcfAppPool" #-Verbose
+	#Start-WebAppPool -Name "WcfAppPool" #-Verbose
+	
+	#Get-ChildItem IIS:\AppPools  | where {$_.state -eq "Started" -and $_.name -eq WcfAppPool} | Start-WebAppPool
+	#Get-ChildItem IIS:\AppPools | where {$_.name -eq "WcfAppPool"} | Stop-WebAppPool
+	
+	# OK Get-ChildItem "IIS:\AppPools" | where { $_.Name -eq "WcfAppPool" -and $_.State -eq "Started" } 
+	
+	#if (Test-Path "IIS:\AppPools\WcfAppPool") { Stop-WebAppPool -Name "IIS:\AppPools\WcfAppPool" }
+	
+	#Get-ItemProperty "IIS:\AppPools\*" | Select -ExpandProperty processModel | Where { $_.username -eq ".\Administrator" }
+
+Restart-WebAppPool (Get-Website -Name WcfAppPool).applicationPool
+
+####################################################################################################    Habilitar administracion IIS
+
+if(-not(Get-Module -name "ServerManager")) {Import-Module ServerManager; Add-WindowsFeature Web-Scripting-Tools} 
+if(-not(Get-Module -name "WebAdministration")) {Import-Module "WebAdministration"} 
+
+####################################################################################################    Habilitar administracion IIS
+
+$myAppPool = Get-WmiObject -Namespace root\WebAdministration -Class ApplicationPool -Filter "Name = 'WcfAppPool'"
+$myAppPool.Stop()
+$myAppPool.Start()
+
+if(-not(Get-Module -name "WebAdministration")) {Import-Module "WebAdministration"} 
+$appPoolPath =  "IIS:\AppPools\WcfAppPool" 
+if(Test-Path $appPoolPath) { Restart-WebAppPool -Name $appPoolPath }
+
+
+invoke-command -computername SERVER -scriptblock {get-webapppoolstate|format-table value,ItemXPath -auto}
+
+
+Get-WmiObject win32_service | Get-Member -memberType Property
+
+Get-WmiObject win32_service | Select-Object -Property State, Name, DisPlayName  | Format-Table -AutoSize
+
+Get-WmiObject win32_service | Where-Object { $_.Started -eq $true } | Select-Object -Property State, Name, DisPlayName | Format-Table -AutoSize
+
+
+Get-Service -Displayname "*network*"
+
+Get-WmiObject win32_service | Where-Object { $_.State -eq 'Running' -and $_.Name -like "BTSSvc$*" } | Select-Object -Property State, Name, DisPlayName | Format-Table -AutoSize
+
+
+Get-WmiObject -class Win32_OperatingSystem -computername . | Where-Object { $_.BuildNumber -eq 7601 } | Select-Object -Property @{name='ComputerName';expression={$_.__SERVER}},Caption,ServicePackMajorVersion
+
+
+BTSSvc$
+
+
+$myObj = Get-WmiObject win32_service | Where-Object { $_.State -eq 'Running' -and $_.Name -like "BTSSvc$*" } 
+$myObj | Format-Table -AutoSize
+
+cls
+$params = @{ 'Class' = 'Win32_Service'; 'ComputerName' = '.'; 'Filter' = "name like 'BTSSvc$%'"}
+#$params = @{ 'Class' = 'Win32_Service'; 'ComputerName' = '.'; 'Filter' = "name like 'BTSSvc$%' and State='Running'"}
+$params | Format-Table -AutoSize
+$myObj = Get-WmiObject @params 
+$myObj | Format-Table -AutoSize
+
+cls
+$params = @{ 'Class' = 'Win32_Service'; 'ComputerName' = '.'; 'Filter' = "name like 'BTSSvc$%'"}
+$params | Format-Table -AutoSize
+$BTSGroups = Get-WmiObject @params 
+foreach($item in $BTSGroups) { Write-host $item.Name }
+
+
+cls
+[string]$server = "IGBTS-017"
+
+$params = @{ 'Class' = 'Win32_Service'; 'ComputerName' = $server; 'Filter' = "name like 'BTSSvc$%'"}
+$params | Format-Table -AutoSize
+$BTSGroups = Get-WmiObject @params 
+foreach($item in $BTSGroups) { Write-host $item.Name }
+
+
+Invoke-Command | Get-Member -memberType Property
+
+----------------------------------------------------------------------------------
+
+F:\PowerShell\IaC\Src\StopBizTalkServices.ps1 -Environment "LAB" -Farm "LAB BTS 2016"
+F:\PowerShell\IaC\Src\ChangeCredentialBizTalkServices.ps1 -Environment "LAB" -Farm "LAB BTS 2016"
+F:\PowerShell\IaC\Src\StartBizTalkServices.ps1 -Environment "LAB" -Farm "LAB BTS 2016"
+
+
+F:\PowerShell\IaC\Src\StopAppPools.ps1 -Environment "LAB" -Farm "LAB BTS 2016"
+F:\PowerShell\IaC\Src\ChangeCredentialAppPools.ps1 -Environment "LAB" -Farm "LAB BTS 2016"
+F:\PowerShell\IaC\Src\StartAppPools.ps1 -Environment "LAB" -Farm "LAB BTS 2016"
+
+C:\PowerShell\IaC\Src\CreateHostBizTalk.ps1 -Environment "LAB" -Farm "LAB BTS 2016"
+
+----------------------------------------------------------------------------------
+2010
+
+PROD ON DEMAND FARM
+172.25.5.211	LANAPBZTLKSRV01
+172.25.5.212	LANAPBZTLKSRV02
+172.25.5.213	LANAPBZTLKSRV03
+172.25.5.214	LANAPBZTLKSRV04
+172.25.5.215	LANAPBZTLKSRV05
+172.25.5.216	LANAPBZTLKSRV06
+
+PROD BATCH - STANDALONE SERVER
+10.192.136.54	LANAPITAUBZ01
+
+UAT ON DEMAND
+172.25.2.223	LANAPBZTLKSRV01
+172.25.2.224	LANAPBZTLKSRV02
+172.25.2.225	LANAPBZTLKSRV03
+172.25.2.226	LANAPBZTLKSRV04
+172.25.2.217	LANAPBZTLKSRV05
+172.25.2.218	LANAPBZTLKSRV06
+
+UAT BATCH - STANDALONE SERVER
+172.25.2.116	LANAPITAUBZ01
+
+UAT ITAU FARM
+172.25.2.150	MAIBZTLKSRVN01
+172.25.2.151	MAIBZTLKSRVN02
+172.25.2.152	MAIBZTLKSRVN03
+172.25.2.153	MAIBZTLKSRVN04
+172.25.2.154	MAIBZTLKSRVN05
+172.25.2.155	MAIBZTLKSRVN06
+
+PROD ITAU FARM
+10.192.136.90	LANAPBZITAU01
+10.192.136.91	LANAPBZITAU02
+10.192.136.92	LANAPBZITAU03
+10.192.136.93	LANAPBZITAU04
+10.192.136.94	LANAPBZITAU05
+10.192.136.95	LANAPBZITAU06
+
+----------------------------------------------------------------------------------
+2016
+LAB
+172.25.104.157	LAUSD-WBZT0014
+172.25.104.158	LAUSD-WBZT0015
+172.25.104.159	LAUSD-WBZT0016
+172.25.104.165	LAUSD-WBZT0017
+172.25.104.166	LAUSD-WBZT0018
+172.25.104.175	LAUSD-WBZT0019
+
+SIT ON DEMAND
+172.25.104.183	LAUSD-WBZT0020
+172.25.104.184	LAUSD-WBZT0021
+172.25.104.185	LAUSD-WBZT0022
+172.25.104.186	LAUSD-WBZT0023
+172.25.104.187	LAUSD-WBZT0024
+172.25.104.188	LAUSD-WBZT0025
+
+SIT BATCH
+172.25.104.191	LAUSD-WBZT0026
+172.25.104.192	LAUSD-WBZT0027
+172.25.104.193	LAUSD-WBZT0028
+172.25.104.194	LAUSD-WBZT0029
+172.25.104.195	LAUSD-WBZT0030
+172.25.104.196	LAUSD-WBZT0031
+
+UAT ON DEMAND
+172.25.104.128	LAUSD-WBZT0001
+172.25.104.129	LAUSD-WBZT0002
+172.25.104.130	LAUSD-WBZT0003
+172.25.104.131	LAUSD-WBZT0004
+172.25.104.132	LAUSD-WBZT0005
+172.25.104.133	LAUSD-WBZT0006
+
+UAT BATCH
+172.25.104.81	LAUSD-WBZT0007
+172.25.104.85	LAUSD-WBZT0008
+172.25.104.86	LAUSD-WBZT0009
+172.25.104.87	LAUSD-WBZT0010
+172.25.104.88	LAUSD-WBZT0011
+172.25.104.89	LAUSD-WBZT0012
+
+PREPROD ON DEMAND
+172.25.104.176	LAUSD-WBZT0032
+172.25.104.177	LAUSD-WBZT0033
+172.25.104.178	LAUSD-WBZT0034
+172.25.104.179	LAUSD-WBZT0035
+172.25.104.181	LAUSD-WBZT0036
+172.25.104.212	LAUSD-WBZT0037
+
+PREPROD BATCH
+172.25.104.215	LAUSD-WBZT0038
+172.25.104.216	LAUSD-WBZT0039
+172.25.104.217	LAUSD-WBZT0040
+172.25.104.218	LAUSD-WBZT0041
+172.25.104.219	LAUSD-WBZT0042
+172.25.104.220	LAUSD-WBZT0043
+
+PROD ON DEMAND
+172.25.5.222	LAUSD-WBZT0044
+172.25.5.249	LAUSD-WBZT0045
+172.25.5.250	LAUSD-WBZT0046
+172.25.5.110	LAUSD-WBZT0047
+172.25.5.111	LAUSD-WBZT0048
+172.25.5.112	LAUSD-WBZT0049
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

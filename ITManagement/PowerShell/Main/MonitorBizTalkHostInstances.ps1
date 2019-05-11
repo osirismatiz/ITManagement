@@ -21,7 +21,7 @@ $host.ui.rawui.windowtitle = $SCRIPTNAME
 WriteLog "INFO" $SCRIPTNAME $SCRIPTNAME
 
 function Main{
-	try{ 
+	Try{ 
 		WriteLog "INFO" ("Reading HostInstances..." ) $SCRIPTNAME
 		#Get DB info
 		[string]$SQLInstance = Get-WmiObject MSBTS_GroupSetting -namespace root\MicrosoftBizTalkServer | Select-Object -expand MgmtDbServerName
@@ -106,7 +106,7 @@ function Main{
 		$computerIP = ((Test-Connection -ComputerName $env:computername -count 1).ipv4address.IPAddressToString)
 		#$arrayHosts | Format-Table -AutoSize 
 		$htmlTable = CreateObjectToHtmlTableGreenStyle $arrayHosts "BizTalk HostInstances Monitor $computerName - [$computerIP]"
-		#$htmlTable | Out-File -FilePath '..\report.html' -Force 
+		#$htmlTable | Out-File -FilePath '.\report.html' -Force 
 		
 		# Highlight Status
 		$htmlTable = $htmlTable -Replace '<td>Stopped</td>', '<td style="background:#FDD;">Stopped</td>'
@@ -121,9 +121,9 @@ function Main{
 	Finally{
 		#Send Email
 		if ($hostInstances -ne $null){
-			SendMessage `
-			"osirismatiz@createglobalweb.com" `
-			"monicahidalgo@createglobalweb.com" `
+			SendMessageNoSSL `
+			"noreply@chubb.com" `
+			"osiris.matiz2@chubb.com" `
 			"BizTalk HostInstances Monitor $computerName - [$computerIP]" `
 			"$htmlTable"
 		}
